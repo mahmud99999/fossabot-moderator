@@ -6,7 +6,9 @@ const API_BASE = "https://api.fossabot.com/v2/customapi";
 
 const server = http.createServer(async (req, res) => {
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
-
+console.log("REQUEST:", req.method, req.url);
+console.log("HAS TOKEN:", Boolean(req.headers["x-fossabot-customapitoken"]));
+console.log("FOSSABOT HEADERS:", Object.keys(req.headers).filter(h => h.startsWith("x-fossabot-")));
   if (req.url === "/health") {
     res.writeHead(200);
     return res.end("OK");
