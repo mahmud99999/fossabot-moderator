@@ -31,7 +31,7 @@ console.log("FOSSABOT HEADERS:", Object.keys(req.headers).filter(h => h.startsWi
     const validation = await fetch(
       `${API_BASE}/validate/${encodeURIComponent(token)}`
     );
-
+console.log("VALIDATION STATUS:", validation.status);
     if (!validation.ok) {
       res.writeHead(200);
       return res.end("1");
@@ -50,14 +50,15 @@ console.log("FOSSABOT HEADERS:", Object.keys(req.headers).filter(h => h.startsWi
 
     // Получаем контекст сообщения
     const response = await fetch(contextUrl);
-
+console.log("CONTEXT STATUS:", response.status);
     if (!response.ok) {
       res.writeHead(200);
       return res.end("1");
     }
 
     const context = await response.json();
-
+console.log("MESSAGE:", context.message?.content);
+console.log("ROLES:", (context.message?.user?.roles || []).map(role => role.type));
     if (!context.message?.user) {
       res.writeHead(200);
       return res.end("1");
