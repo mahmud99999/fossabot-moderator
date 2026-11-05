@@ -60,6 +60,7 @@ console.log("CONTEXT STATUS:", response.status);
 console.log("MESSAGE:", context.message?.content);
 console.log("ROLES:", (context.message?.user?.roles || []).map(role => role.type));
     console.log("ROLES DETAIL:", JSON.stringify(context.message?.user?.roles || []));
+    console.log("USER DETAIL:", JSON.stringify(context.message?.user || {}));
     if (!context.message?.user) {
       res.writeHead(200);
       return res.end("1");
