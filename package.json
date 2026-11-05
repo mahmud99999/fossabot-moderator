@@ -1,0 +1,13 @@
+
+{
+  "name": "fossabot-moderator",
+  "version": "1.0.0",
+  "description": "Fossabot moderator command API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
