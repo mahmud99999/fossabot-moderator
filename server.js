@@ -104,7 +104,7 @@ console.log("ROLES:", (context.message?.user?.roles || []).map(role => role.type
       "strogo",
       "vvw_ra666",
       "weirdo6x9",
-      "zweih1221"
+      "zweih1221",
       "keliencs"
     ]);
 
