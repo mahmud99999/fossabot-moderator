@@ -66,17 +66,57 @@ console.log("ROLES:", (context.message?.user?.roles || []).map(role => role.type
       return res.end("1");
     }
 
-    const roles = context.message.user.roles || [];
+    
+    const moderatorLogins = new Set([
+      "akechii666",
+      "alonz_",
+      "aura_i_",
+      "bloodrain1221",
+      "brooosk1",
+      "cemka_23",
+      "csjambo",
+      "ct0m",
+      "deko",
+      "denzyof",
+      "fearcs2",
+      "fedos1ch",
+      "fossabot",
+      "fpssssssssssssssssssss",
+      "g0oosuu",
+      "hypenoise_art",
+      "hypetried",
+      "igor16fed",
+      "k1zyao_o",
+      "kashl1d",
+      "korya_mc",
+      "m3wsu",
+      "mefchik_00",
+      "monzoyoyo",
+      "mus1khaha1221",
+      "niewsz",
+      "oskasnothappy",
+      "polzaaaaa",
+      "quefix_",
+      "ryujincs1",
+      "sdaim_",
+      "sn3pffahaha",
+      "spiritdozz",
+      "strogo",
+      "vvw_ra666",
+      "weirdo6x9",
+      "zweih1221"
+      "keliencs"
+    ]);
 
-    const isModerator = roles.some(role =>
-      ["moderator", "broadcaster"].includes(role.type)
-    );
+    const userLogin = (context.message.user.login || "").toLowerCase();
+    const isModerator = moderatorLogins.has(userLogin);
 
     // Обычный зритель всегда получает одну ссылку
     if (!isModerator) {
       res.writeHead(200);
       return res.end("1");
     }
+
 
     // Читаем число из сообщения, например !тг 7
     const message = context.message.content || "";
