@@ -59,6 +59,7 @@ console.log("CONTEXT STATUS:", response.status);
     const context = await response.json();
 console.log("MESSAGE:", context.message?.content);
 console.log("ROLES:", (context.message?.user?.roles || []).map(role => role.type));
+    console.log("ROLES DETAIL:", JSON.stringify(context.message?.user?.roles || []));
     if (!context.message?.user) {
       res.writeHead(200);
       return res.end("1");
